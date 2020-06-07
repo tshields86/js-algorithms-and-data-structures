@@ -31,61 +31,59 @@ class SinglyLinkedList {
     if (index === this.length) return this.insertLast(value);
 
     const newNode = new Node(value);
-    const prev = this.get(index - 1);
-    let temp = prev.next;
-    prev.next = newNode;
-    newNode.next = temp;
+    const beforeNode = this.get(index - 1);
+    const afterNode = beforeNode.next;
+    beforeNode.next = newNode;
+    newNode.next = afterNode;
     this.length++;
     return this;
   }
 
   removeFirst() {
-    if (this.isEmpty()) return null;
-    const value = this.head.value;
+    if (this.isEmpty()) return;
+    const oldHead = this.head;
     if (this.length === 1) this.head = this.tail = null;
-    else this.head = this.head.next;
+    else {
+      this.head = this.head.next
+      oldHead.next = null;
+    };
     this.length--;
-    return value;
+    return oldHead;
   }
 
   removeLast() {
-    if (this.isEmpty()) return null;
-    const value = this.tail.value;
+    if (this.isEmpty()) return;
+    const oldTail = this.tail;
     if (this.length === 1) this.head = this.tail = null;
     else {
-      let cur = this.head;
-      let prev = this.head;
-      while (cur.next) {
-        prev = cur;
-        cur = cur.next;
-      }
-      this.tail = prev;
+      const beforeNode = this.get(length - 2);
+      this.tail = beforeNode;
       this.tail.next = null;
     }
     this.length--;
-    return value;
+    return oldTail;
   }
 
   remove(index) {
-    if (index < 0 || index >= this.length) return null;
+    if (index < 0 || index >= this.length) return;
     if (index === 0) return this.removeFirst();
     if (index === this.length - 1) return this.removeLast();
 
-    const prev = this.get(index - 1);
-    const value = prev.next.value;
-    prev.next = prev.next.next;
+    const beforeNode = this.get(index - 1);
+    const node = beforeNode.next;
+    beforeNode.next = node.next;
     this.length--;
-    return value;
+    return node;
   }
 
   getFirst() {
-    if (this.isEmpty()) return null;
-    return this.head.value;
+    if (this.isEmpty()) return;
+    return this.head;
   }
 
   getLast() {
-    if (this.isEmpty()) return null;
-    return this.tail.value;
+    if (this.isEmpty()) return;
+    return this.tail;
   }
 
   get(index) {
@@ -94,7 +92,7 @@ class SinglyLinkedList {
     for (let i = 0; i < index; i++) {
       current = current.next;
     }
-    return current.value;
+    return current;
   }
 
   set(index, value) {
