@@ -76,6 +76,7 @@ class DoublyLinkedList {
     const afterNode = node.next;
     beforeNode.next = afterNode;
     afterNode.prev = beforeNode;
+    node.next = null, node.prev = null;
     this.length--;
     return node;
   }
@@ -171,3 +172,5 @@ class DoublyLinkedList {
     return this.length === 0;
   }
 };
+
+module.exports = DoublyLinkedList;

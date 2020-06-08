@@ -72,6 +72,7 @@ class SinglyLinkedList {
     const beforeNode = this.get(index - 1);
     const node = beforeNode.next;
     beforeNode.next = node.next;
+    node.next = null;
     this.length--;
     return node;
   }
@@ -161,3 +162,5 @@ class SinglyLinkedList {
     return this.length === 0;
   }
 };
+
+module.exports = SinglyLinkedList;
