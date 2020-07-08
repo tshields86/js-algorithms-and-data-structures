@@ -56,7 +56,7 @@ class SinglyLinkedList {
     const oldTail = this.tail;
     if (this.length === 1) this.head = this.tail = null;
     else {
-      const beforeNode = this.get(length - 2);
+      const beforeNode = this.get(this.length - 2);
       this.tail = beforeNode;
       this.tail.next = null;
     }

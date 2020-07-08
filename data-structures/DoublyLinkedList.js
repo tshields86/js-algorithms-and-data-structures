@@ -102,7 +102,7 @@ class DoublyLinkedList {
     } else {
       current = this.tail;
       for (let i = this.length - 1; i > index; i--) {
-        current = current.next;
+        current = current.prev;
       }
     }
     return current;
@@ -139,7 +139,10 @@ class DoublyLinkedList {
       current.next = temp;
       current = current.prev;
     }
-    if (temp) this.head = temp.prev;
+    if (temp) {
+      this.tail = this.head;
+      this.head = temp.prev
+    };
     return this;
   }
 

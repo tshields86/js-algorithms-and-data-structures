@@ -27,7 +27,7 @@ class Graph {
   removeVertex(vertex) {
     if (!this.adjList.has(vertex)) return;
     this.adjList.get(vertex)
-      .forEach(edge => this.removeEdge(vertex, edge));
+      .forEach(neighbor => this.removeEdge(vertex, neighbor));
     this.adjList.delete(vertex);
   }
 
@@ -88,6 +88,6 @@ class Graph {
 
     return result;
   }
-}
+};
 
 module.exports = Graph;

@@ -1,6 +1,6 @@
 /* 
 Write a recursive function called capitalizeWords.
-GIven an array of words, return a new array containing
+Given an array of words, return a new array containing
 each word capitalized.
 */
 

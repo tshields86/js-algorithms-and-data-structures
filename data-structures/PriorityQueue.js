@@ -23,7 +23,7 @@ class PriorityQueue {
     const item = this.items.pop();
     this.size--;
     this.heapifyDown();
-    return item;
+    return item.value;
   }
 
   heapifyUp() {
